@@ -20,3 +20,7 @@ npm install @ant-design/icons
 ```bash
 import 'antd/dist/reset.css';
 ```
+
+## React Router Implementation
+
+`npm install react-router-dom`
