@@ -24,3 +24,26 @@ import 'antd/dist/reset.css';
 ## React Router Implementation
 
 `npm install react-router-dom`
+
+## Working on Github Branches
+
+```bash
+# Create and switch to new branch
+git checkout -b modal-feature
+
+# Add and commit your changes
+git add .
+git commit -m "Added modal feature"
+
+# (Optional) Push the branch to remote
+git push origin modal-feature
+
+# Switch back to main branch
+git checkout main
+
+# Merge modal-feature branch into main
+git merge modal-feature
+
+# Push the merged changes to remote
+git push origin main
+```
