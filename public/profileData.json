@@ -1,0 +1,16 @@
+{
+  "id": 7,
+  "firstName": "Giorgi",
+  "lastName": "Nareklishvili",
+  "role": "Developer",
+  "username": "gionare",
+  "email": "gionare93@gmail.com",
+  "phoneNumber": "+19295915959",
+  "profileImageUrl": "/img/gio.jpeg",
+  "eventsApplied": 45,
+  "eventsHeld": 12,
+  "currentEvents": 5,
+  "linkedInUrl": "https://www.linkedin.com/in/gionare/",
+  "birthday": "1993-03-06",
+  "biography": "Passionate developer with experience in creating innovative web solutions, problem-solving abilities, Giorgi has worked on various projects. Enthusiastic about technology trends, enjoys coding challenges."
+}

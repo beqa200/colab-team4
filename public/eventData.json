@@ -1,0 +1,28 @@
+{
+  "id": 1,
+  "title": "Annual Tech Conference",
+  "date": "2024-11-10",
+  "venue": "Tech Convention Center",
+  "attendees": [
+    {
+      "id": 101,
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "avatar": "https://example.com/avatars/john_doe.jpg"
+    },
+    {
+      "id": 102,
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "avatar": "https://example.com/avatars/jane_smith.jpg"
+    }
+  ],
+  "description": "A conference to discuss the latest in technology.",
+  "organizer": {
+    "name": "Tech Event Corp",
+    "contactEmail": "info@techeventcorp.com",
+    "contactPhone": "+1-555-555-1234"
+  },
+  "capacity": 500,
+  "imageURL": "https://example.com/event-images/tech-conference.jpg"
+}
