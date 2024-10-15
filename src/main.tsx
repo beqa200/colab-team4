@@ -12,7 +12,6 @@ import Profile from "./pages/Profile/Profile";
 import Layout from "./layouts/Layout";
 import AuthLayout from "./layouts/AuthLayout";
 
-
 const router = createBrowserRouter([
   {
     path: "/",
