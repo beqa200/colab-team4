@@ -3,6 +3,7 @@ import Moon from "/images/icon-moon.svg";
 import Plus from "/images/icon-plus.svg";
 import Sun from "/images/icon-sun.svg";
 import { Button, Modal } from "antd";
+import { FileImageOutlined } from "@ant-design/icons";
 
 export default function Header() {
   const [isNightMode, setIsNightMode] =
@@ -10,6 +11,9 @@ export default function Header() {
 
   const [isModalOpen, setIsModalOpen] =
     useState<boolean>(false);
+
+  const [selectedImage, setSelectedImage] =
+    useState<string | null>(null);
 
   const toggleTheme = (): void => {
     setIsNightMode(!isNightMode);
@@ -29,6 +33,16 @@ export default function Header() {
 
     console.log("Form submitted");
     setIsModalOpen(false);
+  };
+
+  const handleImageChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setSelectedImage(imageUrl);
+    }
   };
   return (
     <div
@@ -70,14 +84,14 @@ export default function Header() {
         onCancel={handleCancel}
         footer={[
           <Button
-            className="font-[poppins] font-bold rounded-[10px] [box-shadow:0_4px_4px_0_rgba(0,_0,_0,_0.25)] border-none"
+            className="mt-[20px] mb-[10px] font-[poppins] font-bold rounded-full [box-shadow:0_4px_4px_0_rgba(0,_0,_0,_0.25)] border-none"
             key="cancel"
             onClick={handleCancel}
           >
             Cancel
           </Button>,
           <Button
-            className="font-[poppins] font-bold rounded-[10px] [box-shadow:0_4px_4px_0_rgba(0,_0,_0,_0.25)]"
+            className="font-[poppins] font-bold rounded-full [box-shadow:0_4px_4px_0_rgba(0,_0,_0,_0.25)]"
             key="submit"
             type="primary"
             onClick={handleSubmit}
@@ -97,23 +111,40 @@ export default function Header() {
             id="eventForm"
             onSubmit={handleSubmit}
           >
-            <div className="flex flex-col">
+            <div className="flex flex-col mt-[10px]">
               <label
                 className="mb-[4px] font-bold font-[poppins]"
                 htmlFor="eventImage"
               >
                 Event Image
               </label>
-              <input
-                className="font-[poppins] text-[11px]"
-                type="file"
-                id="eventImage"
-                name="eventImage"
-                accept="image/*"
-              />
+              <div className="relative w-[310px] h-[200px] bg-[#f5f5f5] rounded-[10px] flex flex-col justify-center items-center border-none border-gray-300 cursor-pointer [box-shadow:0_4px_4px_0_rgba(0,_0,_0,_0.25)]">
+                <input
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                  type="file"
+                  id="eventImage"
+                  name="eventImage"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                />
+                {selectedImage ? (
+                  <img
+                    src={selectedImage}
+                    alt="Selected event"
+                    className="w-full h-full object-cover rounded-[10px]"
+                  />
+                ) : (
+                  <div className="flex flex-col justify-center items-center">
+                    <FileImageOutlined className="text-[30px] text-gray-400 mb-[10px] font-[poppins]" />
+                    <p className="text-gray-400 text-[12px]">
+                      Tap to add an image
+                    </p>
+                  </div>
+                )}
+              </div>
             </div>
 
-            <div className="flex flex-col mt-[10px]">
+            <div className="flex flex-col mt-[14px]">
               <label
                 className="mb-[4px] font-bold font-[poppins]"
                 htmlFor="eventName"
@@ -130,7 +161,7 @@ export default function Header() {
               />
             </div>
 
-            <div className="flex flex-col mt-[10px]">
+            <div className="flex flex-col mt-[14px]">
               <label
                 className="mb-[4px] font-bold font-[poppins]"
                 htmlFor="eventDescription"
@@ -146,7 +177,7 @@ export default function Header() {
               />
             </div>
 
-            <div className="flex flex-col mt-[10px]">
+            <div className="flex flex-col mt-[14px]">
               <label
                 className="mb-[4px] font-bold font-[poppins]"
                 htmlFor="eventDate"
@@ -162,7 +193,7 @@ export default function Header() {
               />
             </div>
 
-            <div className="flex flex-col mt-[10px]">
+            <div className="flex flex-col mt-[14px]">
               <label
                 className="mb-[4px] font-bold font-[poppins]"
                 htmlFor="eventTime"
@@ -178,7 +209,7 @@ export default function Header() {
               />
             </div>
 
-            <div className="flex flex-col mt-[10px]">
+            <div className="flex flex-col mt-[14px]">
               <label
                 className="mb-[4px] font-bold font-[poppins]"
                 htmlFor="eventPlace"
@@ -195,7 +226,7 @@ export default function Header() {
               />
             </div>
 
-            <div className="flex flex-col mt-[10px]">
+            <div className="flex flex-col mt-[14px]">
               <label
                 className="mb-[4px] font-bold font-[poppins]"
                 htmlFor="participants"
