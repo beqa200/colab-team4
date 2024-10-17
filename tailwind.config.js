@@ -3,6 +3,10 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      screens: {
+        'md': '768px',
+        'lg': '1440px',
+      },
       keyframes: {
         slideInRight: {
           "0%": { transform: "translateX(100%)", opacity: 0 },
