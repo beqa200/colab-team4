@@ -60,3 +60,9 @@ npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion~~~
 
 1. If your app is running purely on the frontend (without a server backend), you can't persist the changes directly in the profileData.json file because frontend code doesn't have write access to the local file system.
 2. In this case, you can simulate changes within the application by updating the state, but these changes won't be saved to profileData.json permanently.
+
+## Tailwind CSS Installe
+
+```bash
+npm install tailwindcss
+```
