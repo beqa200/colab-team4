@@ -10,8 +10,3 @@
     animation: logo-spin infinite 20s linear;
   }
 }
-
-.custom-button-wrapper .ant-btn:hover {
-  @apply bg-gradient-to-l from-red-500 to-purple-400 !important; /* Make hover styles important */
-  transition: background-color 0.3s ease !important; /* Ensure transition is also important */
-}
