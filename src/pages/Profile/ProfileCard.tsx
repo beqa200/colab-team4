@@ -35,15 +35,15 @@ const ProfileCard: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col md:flex-row justify-center items-center min-h-screen space-y-8 md:space-y-0 md:space-x-8">
+    <div className="flex flex-col md:flex-row justify-center items-center  space-y-8 md:space-y-0 md:space-x-8">
       {/* Cover Image */}
-      <div className="w-full md:h-64 absolute top-20">
+      {/* <div className="w-full md:h-64 absolute top-20">
         <img
           src="public/img/cover.jpg" // Add a URL for the cover image
           alt="Cover"
           className="absolute  w-full h-full object-cover rounded-t-lg"
         />
-      </div>
+      </div> */}
 
       {userProfile && (
         <div className="relative bg-white border w-96 h-[600px] -20 rounded-lg p-6 shadow-lg flex flex-col text-center">
