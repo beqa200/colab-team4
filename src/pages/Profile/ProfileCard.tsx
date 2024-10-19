@@ -1,14 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, {
+  useEffect,
+  useState,
+} from "react";
 
 import ProfileContentEdit from "./ProfileContent";
 import { fetchProfileData } from "../../services/profileService";
 import { UserProfile } from "../../types/userProfile";
 
 const ProfileCard: React.FC = () => {
-  const [isEditing, setIsEditing] = useState(false);
-  const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
+  const [isEditing, setIsEditing] =
+    useState(false);
+  const [userProfile, setUserProfile] =
+    useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<
+    string | null
+  >(null);
 
   useEffect(() => {
     const loadProfile = async () => {
@@ -16,7 +23,10 @@ const ProfileCard: React.FC = () => {
         const profile = await fetchProfileData();
         setUserProfile(profile);
       } catch (err) {
-        console.error("Profile fetch error:", err); // Log the error for debugging
+        console.error(
+          "Profile fetch error:",
+          err
+        ); // Log the error for debugging
         setError("Failed to load profile data.");
       } finally {
         setLoading(false);
@@ -49,27 +59,48 @@ const ProfileCard: React.FC = () => {
       {userProfile && (
         <div className="relative bg-white border w-96 h-[600px] -20 rounded-b-lg p-6 shadow-lg flex flex-col text-center">
           {<img src={userProfile.profileImageUrl} alt={`${userProfile.firstName}'s profile`} className="w-28 rounded-full mb-4 ml-28 " />}
+
           <h2 className="text-xl font-bold mb-2 ">
-            {userProfile.firstName} {userProfile.lastName}
+            {userProfile.firstName}{" "}
+            {userProfile.lastName}
           </h2>
-          <p className="text-gray-400 text-lg">{userProfile.role}</p>
+          <p className="text-gray-400 text-lg">
+            {userProfile.role}
+          </p>
           <hr className="my-4 mt-8" />
           <div className="flex row-auto justify-between">
-            <p className="text-sm font-semibold text-gray-500">Events Applied</p>
-            <p className="text-[#ed9b13] mb-2">{userProfile.eventsApplied}</p>
+            <p className="text-sm font-semibold text-gray-500">
+              Events Applied
+            </p>
+            <p className="text-[#ed9b13] mb-2">
+              {userProfile.eventsApplied}
+            </p>
           </div>
           <hr className="my-4" />
           <div className="flex row-auto justify-between">
-            <p className="text-sm font-semibold text-gray-500">Events Held</p>
-            <p className="text-[#36c537]">{userProfile.eventsHeld}</p>
+            <p className="text-sm font-semibold text-gray-500">
+              Events Held
+            </p>
+            <p className="text-[#36c537]">
+              {userProfile.eventsHeld}
+            </p>
           </div>
           <hr className="my-4" />
           <div className="flex row-auto justify-between">
-            <p className="text-sm font-semibold text-gray-500">Current Events</p>
-            <p className="text-red-600">{userProfile.currentEvents}</p>
+            <p className="text-sm font-semibold text-gray-500">
+              Current Events
+            </p>
+            <p className="text-red-600">
+              {userProfile.currentEvents}
+            </p>
           </div>
           <hr className="my-4" />
-          <a href={userProfile.linkedInUrl} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline mt-4 border p-3">
+          <a
+            href={userProfile.linkedInUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 underline mt-4 border p-3"
+          >
             LinkedIn Profile
           </a>
           <button
@@ -81,7 +112,12 @@ const ProfileCard: React.FC = () => {
         </div>
       )}
       {/* Render the ProfileContent component when isEditing is true */}
-      {isEditing && <ProfileContentEdit setIsEditing={setIsEditing} userProfile={userProfile} />}
+      {isEditing && (
+        <ProfileContentEdit
+          setIsEditing={setIsEditing}
+          userProfile={userProfile}
+        />
+      )}
     </div>
   );
 };
