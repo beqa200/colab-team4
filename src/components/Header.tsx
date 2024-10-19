@@ -39,7 +39,7 @@ export default function Header() {
   };
   return (
     <div className="flex justify-center items-center mt-28 ">
-      <div className={`flex justify-between w-[375px] p-[20px] ${isNightMode ? "bg-black" : "bg-white"}`}>
+      <div className={`flex justify-between w-96 p-[20px] rounded-t-lg ${isNightMode ? "bg-black" : "bg-white"}`}>
         <h1 className={`${isNightMode ? "text-white" : "text-black"}`}>event</h1>
         <div className="flex">
           <img src={Plus} alt="plus icon" className={`w-[24px] h-[24px] mr-[30px] cursor-pointer filter ${isNightMode ? "invert" : ""}`} onClick={showModal} />
