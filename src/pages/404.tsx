@@ -2,9 +2,9 @@
 
 const PageNotFound = () => {
   return (
-    <section className="relative z-10 bg-gradient-to-r from-red-400 via-orange-500 to-purple-600 py-[120px] animate-fadeIn h-full">
+    <section className="relative z-10 bg-gradient-to-r from-red-400 via-orange-500 to-purple-600 py-[120px] animate-fadeIn">
       <div className="container mx-auto">
-        <div className="flex justify-center items-center min-h-[50vh]">
+        <div className="flex justify-center items-center h-[75vh]">
           <div className="w-full max-w-[500px] p-8 bg-white bg-opacity-10 rounded-lg shadow-lg backdrop-blur-md transform transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-2xl animate-cardBounce">
             <div className="text-center">
               <h2 className="mb-2 text-[60px] font-bold text-white sm:text-[80px] md:text-[100px] leading-tight animate-pulse">404</h2>
