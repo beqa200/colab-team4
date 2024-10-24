@@ -1,16 +1,13 @@
 import { createRoot } from "react-dom/client";
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import NotFound from "./pages/404";
 import Profile from "./pages/Profile/Profile";
 import Layout from "./layouts/Layout";
 import AuthLayout from "./layouts/AuthLayout";
+import PageNotFound from "./pages/404";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +24,7 @@ const router = createBrowserRouter([
       },
       {
         path: "*",
-        element: <NotFound />,
+        element: <PageNotFound />,
       },
     ],
   },
@@ -48,6 +45,4 @@ const router = createBrowserRouter([
   },
 ]);
 
-createRoot(
-  document.getElementById("root")!
-).render(<RouterProvider router={router} />);
+createRoot(document.getElementById("root")!).render(<RouterProvider router={router} />);
