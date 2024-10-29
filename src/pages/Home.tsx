@@ -1,9 +1,16 @@
-// import React from "react";
+import EventDay from "/images/event-day.jpg";
+import EventNight from "/images/event-night.jpg";
 
 const Home = () => {
   return (
     <div>
-      <h1>Home Page</h1>
+      <div>
+        <img
+          className="w-full h-[800px]"
+          src={EventDay}
+          alt="logo img"
+        />
+      </div>
     </div>
   );
 };
