@@ -2,7 +2,7 @@ import { useState } from "react";
 import Moon from "/images/icon-moon.svg";
 import Plus from "/images/icon-plus.svg";
 import Sun from "/images/icon-sun.svg";
-import { Button, Modal } from "antd";
+import { Modal } from "antd";
 import { FileImageOutlined } from "@ant-design/icons";
 
 export default function Header() {
@@ -63,7 +63,7 @@ export default function Header() {
             : "text-white"
         }`}
       >
-        event
+        PlanMe
       </h1>
       <div className="flex">
         <img
@@ -85,36 +85,56 @@ export default function Header() {
       </div>
       <Modal
         className="flex w-full justify-center items-center"
+        styles={{
+          content: {
+            backgroundColor: isNightMode
+              ? "#0e1223"
+              : "white",
+          },
+        }}
         title=" "
         open={isModalOpen}
         onCancel={handleCancel}
         footer={[
-          <Button
-            className="mt-[20px] mb-[10px] font-[poppins] font-bold rounded-full [box-shadow:0_4px_4px_0_rgba(0,_0,_0,_0.25)] border-none"
-            key="cancel"
-            onClick={handleCancel}
-          >
-            Cancel
-          </Button>,
-          <Button
-            className="font-[poppins] font-bold rounded-full [box-shadow:0_4px_4px_0_rgba(0,_0,_0,_0.25)]"
-            key="submit"
-            type="primary"
-            onClick={handleSubmit}
-            form="eventForm"
-          >
-            Submit
-          </Button>,
+          <div className="flex justify-end">
+            <button
+              className="mb-[10px] mr-[12px] w-[90px] h-[32px] font-[poppins] text-white font-bold rounded-full [box-shadow:0_4px_4px_0_rgba(0,_0,_0,_0.25)] border-none
+               bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 hover:bg-gradient-to-l hover:from-red-500 hover:to-purple-400 transition duration-300"
+              key="cancel"
+              onClick={handleCancel}
+            >
+              Cancel
+            </button>
+            <button
+              className="font-[poppins] w-[90px] h-[32px] font-bold text-white rounded-full [box-shadow:0_4px_4px_0_rgba(0,_0,_0,_0.25)]
+              bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 hover:bg-gradient-to-l hover:from-red-500 hover:to-purple-400 transition duration-300"
+              key="submit"
+              onClick={handleSubmit}
+            >
+              Submit
+            </button>
+          </div>,
         ]}
         closable={false}
       >
         <div className="flex flex-col w-full md:w-[470px] lg:w-[600px]">
-          <h2 className="text-[24px] font-bold text-center font-[poppins] md:text-[26px] lg:text-[30px]">
+          <h2
+            className={`text-[24px] font-bold text-center font-[poppins] md:text-[26px] lg:text-[30px] ${
+              isNightMode
+                ? "text-[#3a4d60]"
+                : "text-[#1a2a77]"
+            }`}
+          >
             Add a new event
           </h2>
           <form
-            className="mt-[30px] md:grid md:grid-cols-2 md:grid-row-2 
-            lg:grid lg:grid-cols-2 lg:grid-row-2 md:pl-[20px] lg:pl-[30px]"
+            className={`pt-[20px] pb-[20px] px-[12px]   
+            md:px-0 lg:px-0 md:grid md:grid-cols-2 md:grid-row-2 
+            lg:grid lg:grid-cols-2 lg:grid-row-2 place-items-center ${
+              isNightMode
+                ? "bg-[#0e1223]"
+                : "bg-[#ffffff]"
+            }`}
             id="eventForm"
             onSubmit={handleSubmit}
           >
@@ -123,14 +143,22 @@ export default function Header() {
             md:row-[1_/_3] lg:row-[1_/_3]"
             >
               <label
-                className="mb-[4px] font-bold font-[poppins]"
+                className={`mb-[6px] font-bold font-[poppins] ${
+                  isNightMode
+                    ? "text-[#3a4d60]"
+                    : "text-[#1a2a77]"
+                }`}
                 htmlFor="eventImage"
               >
                 Event Image
               </label>
               <div
-                className="relative w-[310px] h-[200px] bg-[#f5f5f5] rounded-[10px] flex flex-col justify-center items-center border-none border-gray-300 cursor-pointer [box-shadow:0_4px_4px_0_rgba(0,_0,_0,_0.25)]
-              md:w-[200px] md:h-[150px] lg:w-[250px] lg:h-[170px]"
+                className={`relative w-[310px] h-[200px] rounded-[10px] flex flex-col justify-center items-center border-none border-gray-300 cursor-pointer [box-shadow:0_4px_4px_0_rgba(0,_0,_0,_0.25)]
+              md:w-[200px] md:h-[150px] lg:w-[250px] lg:h-[170px] ${
+                isNightMode
+                  ? "bg-[#071726fc]"
+                  : " bg-[#f5f5f5]"
+              }`}
               >
                 <input
                   className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
@@ -148,8 +176,20 @@ export default function Header() {
                   />
                 ) : (
                   <div className="flex flex-col justify-center items-center">
-                    <FileImageOutlined className="text-[30px] text-gray-400 mb-[10px] font-[poppins]" />
-                    <p className="text-gray-400 text-[12px]">
+                    <FileImageOutlined
+                      className={`text-[30px] ${
+                        isNightMode
+                          ? "text-gray-800"
+                          : "text-[#1a2a77]"
+                      } mb-[10px] font-[poppins]`}
+                    />
+                    <p
+                      className={`text-[12px] ${
+                        isNightMode
+                          ? "text-[#293644]"
+                          : "text-[#1a2a77]"
+                      }`}
+                    >
                       Tap to add an image
                     </p>
                   </div>
@@ -159,14 +199,22 @@ export default function Header() {
 
             <div className="flex flex-col mt-[14px] md:mt-0 lg:mt-0">
               <label
-                className="mb-[4px] font-bold font-[poppins]"
+                className={`mb-[6px] font-bold font-[poppins] ${
+                  isNightMode
+                    ? "text-[#3a4d60]"
+                    : "text-[#1a2a77]"
+                }`}
                 htmlFor="eventName"
               >
                 Event Name
               </label>
               <input
-                className="w-[310px] h-[30px] bg-[#eee] rounded-[10px] text-[12px] pl-[10px] font-[poppins] [box-shadow:0_4px_4px_0_rgba(0,_0,_0,_0.25)]
-                md:w-[200px] lg:w-[250px]"
+                className={`w-[310px] h-[30px] border-0 outline-none rounded-[10px] text-[12px] pl-[10px] font-[poppins] [box-shadow:0_4px_4px_0_rgba(0,_0,_0,_0.25)]
+                md:w-[200px] lg:w-[250px] ${
+                  isNightMode
+                    ? "bg-[#071726fc] placeholder-[#293644] text-[#45586d]"
+                    : " bg-[#f5f5f5] text-[#1a2a77]"
+                }`}
                 type="text"
                 id="eventName"
                 name="eventName"
@@ -177,14 +225,22 @@ export default function Header() {
 
             <div className="flex flex-col mt-[14px]">
               <label
-                className="mb-[4px] font-bold font-[poppins]"
+                className={`mb-[6px] font-bold font-[poppins] ${
+                  isNightMode
+                    ? "text-[#3a4d60]"
+                    : "text-[#1a2a77]"
+                }`}
                 htmlFor="eventDescription"
               >
                 Description
               </label>
               <textarea
-                className="w-[310px] h-[110px] bg-[#eee] rounded-[10px] text-[12px] pt-[5px] pl-[10px] font-[poppins] [box-shadow:0_4px_4px_0_rgba(0,_0,_0,_0.25)]
-                md:w-[200px] md:h-[80px] lg:w-[250px] lg:h-[100px]"
+                className={`w-[310px] h-[110px] border-0 outline-none rounded-[10px] text-[12px] pt-[5px] pl-[10px] font-[poppins] [box-shadow:0_4px_4px_0_rgba(0,_0,_0,_0.25)]
+                md:w-[200px] md:h-[80px] lg:w-[250px] lg:h-[100px] ${
+                  isNightMode
+                    ? "bg-[#071726fc] text-[#45586d] placeholder-[#293644]"
+                    : " bg-[#f5f5f5] text-[#1a2a77]"
+                }`}
                 id="eventDescription"
                 name="eventDescription"
                 placeholder="Enter event description"
@@ -194,14 +250,22 @@ export default function Header() {
 
             <div className="flex flex-col mt-[14px]">
               <label
-                className="mb-[4px] font-bold font-[poppins]"
+                className={`mb-[6px] font-bold font-[poppins] ${
+                  isNightMode
+                    ? "text-[#3a4d60]"
+                    : "text-[#1a2a77]"
+                }`}
                 htmlFor="eventDate"
               >
                 Date
               </label>
               <input
-                className="w-[310px] h-[30px] bg-[#eee] rounded-[10px] text-[12px] pr-[10px] pl-[10px] font-[poppins] [box-shadow:0_4px_4px_0_rgba(0,_0,_0,_0.25)]
-                md:w-[200px] lg:w-[250px]"
+                className={`w-[310px] h-[30px] border-0 outline-none rounded-[10px] text-[12px] pr-[10px] pl-[10px] font-[poppins] [box-shadow:0_4px_4px_0_rgba(0,_0,_0,_0.25)]
+                md:w-[200px] lg:w-[250px] ${
+                  isNightMode
+                    ? "bg-[#071726fc] text-[#293644]"
+                    : " bg-[#f5f5f5] text-[#1a2a77]"
+                }`}
                 type="date"
                 id="eventDate"
                 name="eventDate"
@@ -211,14 +275,22 @@ export default function Header() {
 
             <div className="flex flex-col mt-[14px]">
               <label
-                className="mb-[4px] font-bold font-[poppins]"
+                className={`mb-[6px] font-bold font-[poppins] ${
+                  isNightMode
+                    ? "text-[#3a4d60]"
+                    : "text-[#1a2a77]"
+                }`}
                 htmlFor="eventTime"
               >
                 Time
               </label>
               <input
-                className="w-[310px] h-[30px] bg-[#eee] rounded-[10px] text-[12px] pr-[10px] pl-[10px] font-[poppins] [box-shadow:0_4px_4px_0_rgba(0,_0,_0,_0.25)]
-                md:w-[200px] lg:w-[250px]"
+                className={`w-[310px] h-[30px] border-0 outline-none rounded-[10px] text-[12px] pr-[10px] pl-[10px] font-[poppins] [box-shadow:0_4px_4px_0_rgba(0,_0,_0,_0.25)]
+                md:w-[200px] lg:w-[250px] ${
+                  isNightMode
+                    ? "bg-[#071726fc] text-[#293644]"
+                    : " bg-[#f5f5f5] text-[#1a2a77]"
+                }`}
                 type="time"
                 id="eventTime"
                 name="eventTime"
@@ -228,14 +300,22 @@ export default function Header() {
 
             <div className="flex flex-col mt-[14px]">
               <label
-                className="mb-[4px] font-bold font-[poppins]"
+                className={`mb-[6px] font-bold font-[poppins] ${
+                  isNightMode
+                    ? "text-[#3a4d60]"
+                    : "text-[#1a2a77]"
+                }`}
                 htmlFor="eventPlace"
               >
                 Place
               </label>
               <input
-                className="w-[310px] h-[30px] bg-[#eee] rounded-[10px] text-[12px] pl-[10px] font-[poppins] [box-shadow:0_4px_4px_0_rgba(0,_0,_0,_0.25)]
-                md:w-[200px] lg:w-[250px]"
+                className={`w-[310px] h-[30px] border-0 outline-none rounded-[10px] text-[12px] pl-[10px] font-[poppins] [box-shadow:0_4px_4px_0_rgba(0,_0,_0,_0.25)]
+                md:w-[200px] lg:w-[250px] ${
+                  isNightMode
+                    ? "bg-[#071726fc] text-[#45586d] placeholder-[#293644]"
+                    : " bg-[#f5f5f5] text-[#1a2a77]"
+                }`}
                 type="text"
                 id="eventPlace"
                 name="eventPlace"
@@ -246,14 +326,22 @@ export default function Header() {
 
             <div className="flex flex-col mt-[14px]">
               <label
-                className="mb-[4px] font-bold font-[poppins]"
+                className={`mb-[6px] font-bold font-[poppins] ${
+                  isNightMode
+                    ? "text-[#3a4d60]"
+                    : "text-[#1a2a77]"
+                }`}
                 htmlFor="participants"
               >
                 Number of Participants
               </label>
               <input
-                className="w-[310px] h-[30px] bg-[#eee] rounded-[10px] text-[12px] pl-[10px] font-[poppins] [box-shadow:0_4px_4px_0_rgba(0,_0,_0,_0.25)]
-                md:w-[200px] lg:w-[250px]"
+                className={`w-[310px] h-[30px] border-0 outline-none rounded-[10px] text-[12px] pl-[10px] font-[poppins] [box-shadow:0_4px_4px_0_rgba(0,_0,_0,_0.25)]
+                md:w-[200px] lg:w-[250px] ${
+                  isNightMode
+                    ? "bg-[#071726fc] text-[#45586d] placeholder-[#293644]"
+                    : " bg-[#f5f5f5] text-[#1a2a77]"
+                }`}
                 type="number"
                 id="participants"
                 name="participants"
