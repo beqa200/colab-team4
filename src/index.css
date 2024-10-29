@@ -11,3 +11,21 @@
     box-sizing: border-box;
 }
 
+
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(16%) sepia(21%) saturate(909%) hue-rotate(170deg) brightness(91%) contrast(86%);
+    opacity: 0.8;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(16%) sepia(21%) saturate(909%) hue-rotate(170deg) brightness(91%) contrast(86%);
+    opacity: 0.8;
+  }
+
